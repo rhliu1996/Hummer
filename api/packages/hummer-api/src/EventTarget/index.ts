@@ -93,8 +93,9 @@ export class EventTarget extends HMObject {
         var listeners = this.envents.get(eventName)
         if (listeners != undefined) {
             if (eventLisener == undefined) {
-                listeners.splice(0, listeners.length)
-                this.envents.delete(eventName)
+                listeners.splice(0, listeners.length);
+                this.envents.delete(eventName);
+                this._removeEventListener(eventName);
             } else {
                 const index = listeners.indexOf(eventLisener); // 获取对象在数组中的索引位置
                 if (index > -1) {
@@ -102,8 +103,11 @@ export class EventTarget extends HMObject {
                 } else {
                     console.log("未找到指定对象");
                 }
+                if (listeners.length ==0){
+                    this.envents.delete(eventName);
+                    this._removeEventListener(eventName);
+                }
             }
-            this._removeEventListener(eventName);
         }
 
     }

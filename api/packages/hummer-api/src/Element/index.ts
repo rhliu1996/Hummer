@@ -46,9 +46,11 @@ export class Element extends Node {
     }
 
 
-    protected _setAttribute(key: string, value: any) {
+    protected _setAttribute(key: string, value: any,update:boolean= true) {
         this._attributes[key] = value;
-        this.obj.setAttributes({ [key]: value });
+        if(update){
+            this.obj.setAttributes({ [key]: value });
+        }
     }
 
 

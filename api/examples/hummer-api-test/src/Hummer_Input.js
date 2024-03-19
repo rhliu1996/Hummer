@@ -13,9 +13,10 @@ export class RootView extends View {
         };
 
         let input = new Input();
-        input.text = '';
+        input.text = '默认值';
         input.placeholder = '请输入';
         input.focused = true;
+        
         input.style = {
             width: 80,
             height: 60,
@@ -28,9 +29,12 @@ export class RootView extends View {
             returnKeyType: 'done'
         };
 
+
+
    
 
         input.addEventListener('input', (event) => {
+            console.log("-----------input默认值是：",  input.text)
             console.log("事件1:" + JSON.stringify(event));
         });
 

@@ -56,7 +56,7 @@ export class NotifyCenter extends HummerComponent {
      */
     static triggerEvent(event: string, value: Object) {
         NotifyCenter.checkInstance();
-        NotifyCenter.instance.call("triggerEvent", value);
+        NotifyCenter.instance.call("triggerEvent", event, value);
     }
 
    

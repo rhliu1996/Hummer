@@ -4,6 +4,7 @@ import { HummerElement } from "../../HummerElement"
 
 export class Input extends HummerElement {
 
+
     /**
      * 
      * @param id
@@ -12,6 +13,9 @@ export class Input extends HummerElement {
      */
     public constructor(id: string = "", name: string = "", props: any = {}) {
         super("Input", name, { ...props, viewId: id });
+        this.addEventListener('input', (event: any) => {
+            this._setAttribute("text", event.text, false);
+        });
     }
 
 
