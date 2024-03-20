@@ -26,7 +26,8 @@ export class Hummer {
     }
 
     public static get notifyCenter(): NotifyCenter {
-        return  new NotifyCenter()
+        NotifyCenter.checkInstance()
+        return   NotifyCenter.instance
     }
 
 

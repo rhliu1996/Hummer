@@ -77,18 +77,6 @@ export class EventTarget extends HMObject {
     }
 
 
-    public triggerEvent(eventName: string, value: Object) {
-        this._triggerEvent(eventName, value);
-    }
-
-
-    private _triggerEvent(eventName: string, value: Object) {
-        this.obj.triggerEvent(eventName, value);
-    }
-
-
-    
-
     public removeEventListener(eventName: string, eventLisener?: EventLisener | Function, useCapture?: boolean) {
         var listeners = this.envents.get(eventName)
         if (listeners != undefined) {
@@ -109,7 +97,7 @@ export class EventTarget extends HMObject {
                 }
             }
         }
-
+       
     }
 
     private _removeEventListener(eventName: string) {

@@ -1,4 +1,4 @@
-import{View, Navigator, Hummer} from '../../../packages/hummer-api/dist/hummer-api.es'
+import{View, Navigator, Hummer, Button, NotifyCenter} from '../../../packages/hummer-api/dist/hummer-api.es'
 
 export class RootView extends View {
     constructor() {
@@ -14,26 +14,32 @@ export class RootView extends View {
 
         let pageInfo = {
             id: '111',
-            url: 'hummer://UPPayOneTrava',
-            // url: './test.js',
-            // animated: true,
+            url: 'hummer://template',
             params: {
                 aaa: 111,
                 bbb: 222,
             }
         };
-        Navigator.openPage(pageInfo, (result) => {
-            console.log('Page result: ' + JSON.stringify(result));
+        let button = new Button()
+        button.text = '跳转到下一页'
+        button.style = {
+            backGroundColor: "#ff0000"
+        }
+        button.addEventListener('tap', (event) => {
+            console.log("------开始跳转")
+            Navigator.openPage(pageInfo, (result) => {
+                console.log('Page result: ' + JSON.stringify(result));
+            });
+            
         });
-         
-        // Navigator.popPage({animated: true});
-         
-        // Navigator.popToPage({id: '111', animated: true});
-         
-        // Navigator.popToRootPage({animated: true});
-        
-        // Navigator.popBack(2, {animated: true});
 
+
+        let notifyCenter = Hummer.notifyCenter
+        notifyCenter.addEventListener("myHummer", (e) => {
+            console.log("后一个页面触发myHummer事件", e)
+        })
+
+        this.appendChild(button)
 
     }
 
