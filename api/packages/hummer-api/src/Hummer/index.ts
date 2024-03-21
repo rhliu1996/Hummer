@@ -8,7 +8,7 @@ import { Text } from "../components/Text"
 import { Image } from "../components/Image"
 import { Input } from "../components/Input"
 import { TextArea } from "../components/TextArea"
-import { HummerApi, Env } from "../api/HummerApi"
+import { HummerApi, Env, PageInfo } from "../api/HummerApi"
 import { NotifyCenter } from "../api/NotifyCenter"
 
 export class Hummer {
@@ -28,6 +28,16 @@ export class Hummer {
     public static get notifyCenter(): any {
         return  NotifyCenter
     }
+
+
+    public static get pageInfo(): PageInfo {
+        return HummerApi.getPageInfo()
+    }
+    
+    public static set pageResult(param: any) {
+        HummerApi.setPageResult(param)
+    }
+    
 
 
     /**

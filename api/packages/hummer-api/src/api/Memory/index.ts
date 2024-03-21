@@ -1,6 +1,7 @@
 
 import { HummerComponent } from "../../HummerComponent"
 
+
 export class Memory extends HummerComponent {
 
     private static instance: Memory;
@@ -91,7 +92,7 @@ export class Memory extends HummerComponent {
     }
 
     protected exist(key: string, cb?: Function) {
-        this.call("exist", key, cb);
+        return this.call("exist", key, cb);
     }
 
 }

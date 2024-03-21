@@ -16,6 +16,14 @@ export type Env = {
     availableHeight: number
     scale: number
 }
+
+export type PageInfo = {
+    id: string;
+    url: string;
+    animated: boolean;
+    params?: any
+  };
+  
   
 export class HummerApi extends HummerComponent {
 
@@ -47,5 +55,35 @@ export class HummerApi extends HummerComponent {
     protected getEnv(): Env {
        return this.call("getEnv");
     }
+
+
+    /**
+     * 获取pageInfo
+     *
+     */
+    static getPageInfo(): PageInfo {
+        HummerApi.checkInstance();
+        return HummerApi.instance.getPageInfo();
+    }
+
+    protected getPageInfo(): PageInfo {
+       return this.call("getPageInfo");
+    }
+
+
+
+    /**
+     * 设置setPageResult
+     *
+     */
+    static setPageResult(param: any) {
+        HummerApi.checkInstance();
+        return HummerApi.instance.setPageResult(param);
+    }
+
+    protected setPageResult(param: any) {
+       return this.call("setPageResult", param);
+    }
+
 
 }

@@ -28,7 +28,7 @@ export class RootView extends View {
         button.addEventListener('tap', (event) => {
             console.log("------开始跳转")
             Navigator.openPage(pageInfo, (result) => {
-                console.log('Page result: ' + JSON.stringify(result));
+                console.log('下一个页面的返回值Page result: ' + JSON.stringify(result));
             });
             
         });

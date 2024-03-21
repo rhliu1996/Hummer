@@ -12,14 +12,15 @@ export class RootView extends View {
             paddingTop: 10,
         };
 
-        let pageInfo = {
-            id: '111',
-            url: 'hummer://home',
-            params: {
-                aaa: 111,
-                bbb: 222,
-            }
-        };
+        let pageInfo = Hummer.pageInfo;
+        console.log('后一个页面接收到的pageInfo: ' + JSON.stringify(pageInfo));
+
+
+        let result = {
+            key1: 111,
+            key2: 222,
+        }
+        Hummer.pageResult = result;
 
         let notifyCenter = Hummer.notifyCenter
         let event1 = function(e){

@@ -17,33 +17,38 @@ export class RootView extends View {
         //     console.log("----是否设置成功", JSON.stringify(res))
         // })
 
+        // memory.exist('daijia', (res) => {
+        //     console.log("memory是否存在", JSON.stringify(res))
+        // })
+
+
         // memory.get('daijia', (res) => {
         //     console.log("----查询成功", JSON.stringify(res))
         // })
    
 
 
-    //     let storage = new Storage()
-    //     storage.exist('daijiaStorage', (res) => {
-    //         console.log("----storage查询成功", JSON.stringify(res))
-    //     })
+        let storage = new Storage()
+        storage.exist('daijiaStorage', (res) => {
+            console.log("----storage查询成功", JSON.stringify(res))
+        })
    
-    //     storage.set('daijiaStorage', JSON.stringify({name:'hummer', other:'hummer_api'}), (res) => {
-    //         console.log("----storage是否设置成功", JSON.stringify(res))
-    //         storage.get('daijiaStorage', (res) => {
-    //             console.log("----storage查询成功", JSON.stringify(res))
-    //         })
+        storage.set('daijiaStorage', JSON.stringify({name:'hummer', other:'hummer_api'}), (res) => {
+            console.log("----storage是否设置成功", JSON.stringify(res))
+            storage.get('daijiaStorage', (res) => {
+                console.log("----storage查询成功", JSON.stringify(res))
+            })
        
-    //     })
-
-        let notifyCenter = Hummer.notifyCenter
-        notifyCenter.addEventListener("myHummer", (e) => {
-            console.log("myHummer被执行内容：", e)
         })
 
-        notifyCenter.addEventListener("myHummer", (e) => {
-            console.log("myHummer被执行内容2222222222222：", e)
-        })
+        // let notifyCenter = Hummer.notifyCenter
+        // notifyCenter.addEventListener("myHummer", (e) => {
+        //     console.log("myHummer被执行内容：", e)
+        // })
+
+        // notifyCenter.addEventListener("myHummer", (e) => {
+        //     console.log("myHummer被执行内容2222222222222：", e)
+        // })
         // let testFunction = function test(e) {
         //     console.log("myHummer被执行内容111111：", e)
         // }
@@ -52,7 +57,7 @@ export class RootView extends View {
         // notifyCenter.removeEventListener("myHummer")
         
         
-        notifyCenter.triggerEvent("myHummer", "内容xxxxxxxx")
+        // notifyCenter.triggerEvent("myHummer", "内容xxxxxxxx")
 
 
     //    let env =  Hummer.Env
