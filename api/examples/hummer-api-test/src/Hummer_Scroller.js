@@ -15,6 +15,11 @@ class RootView extends View {
 //            showScrollBar: true,
         }
 
+        this.scroll.showScrollBar = true
+
+        this.scroll.bounces = true
+
+
         for (let i = 0; i < 10; i++) {
             let item = new Text();
             item.text = "文本：" + i;

@@ -18,6 +18,9 @@ export class TextArea extends HummerElement {
             placeholder: '',
             focused: 'false'
         });
+        this.addEventListener('input', (event: any) => {
+            this._setAttribute("text", event.text, false);
+        });
     }
 
 

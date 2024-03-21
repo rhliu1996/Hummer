@@ -30,6 +30,9 @@ export class RootView extends View {
         };
 
 
+let a = input.style
+console.log("------3-3-3-3-3", a, JSON.stringify(a))
+
 
    
 
@@ -53,7 +56,6 @@ export class RootView extends View {
 
 
 
-
         let textArea = new TextArea();
         textArea.text = 'hummer api text';
         textArea.placeholder = '11122hummer api placeholder';
@@ -62,7 +64,7 @@ export class RootView extends View {
         textArea.style = {
             width: 150,
             height: 600,
-            color: '#ffffff',
+            color: '#000000',
             placeholderColor: '#00ff00',
             cursorColor: '#0000ff',
             textAlign: 'center',
@@ -72,6 +74,7 @@ export class RootView extends View {
    
 
         textArea.addEventListener('input', (event) => {
+            console.log("-----------textArea默认值是：",  textArea.text)
             console.log("hummer textArea state11111:" + JSON.stringify(event));
         });
 

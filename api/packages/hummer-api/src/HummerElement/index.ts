@@ -68,7 +68,7 @@ export class HummerElement extends Element {
 
     //扩展样式属性
     public get style() {
-        return this.getStyle || {};
+        return this.getStyle() || {};
     }
 
     //扩展样式属性：有代理时通过代理处理
