@@ -1,11 +1,9 @@
-const { document: _Document } = __Hummer__
-
-
 import { HummerComponent } from "../../HummerComponent"
+const { document: _Document } = __Hummer__;
 
+const hm = __Hummer__;
 export class Storage extends HummerComponent {
 
-    private static instance: Storage;
 
     public constructor(props: any = {}) {
         super("Storage", props);
@@ -15,11 +13,17 @@ export class Storage extends HummerComponent {
         return new Storage();
     }
 
+
     protected static checkInstance() {
-        if (!Storage.instance) {
-            Storage.instance = Storage.newInstance();
+        if (!hm.__storage__) {
+            hm.__storage__ = Storage.newInstance();
         }
     }
+
+    static get instance(): Storage {
+        return hm.__storage__
+    }
+
 
     /**
      * 保存键值对

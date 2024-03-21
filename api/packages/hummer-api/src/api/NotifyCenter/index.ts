@@ -3,7 +3,6 @@ import { HummerComponent } from "../../HummerComponent"
 const { document: _Document } = __Hummer__;
 
 const hm = __Hummer__;
-// let __api__: any;
 
 export class NotifyCenter extends HummerComponent {
 
@@ -13,7 +12,6 @@ export class NotifyCenter extends HummerComponent {
     }
 
     protected static checkInstance() {
-        // __api__ = hm.__api__;
         if (!hm.__notifyCenter__) {
             hm.__notifyCenter__ = NotifyCenter.newInstance();
         }

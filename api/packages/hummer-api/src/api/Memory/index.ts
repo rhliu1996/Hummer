@@ -1,10 +1,10 @@
 
 import { HummerComponent } from "../../HummerComponent"
+const { document: _Document } = __Hummer__;
 
+const hm = __Hummer__;
 
 export class Memory extends HummerComponent {
-
-    private static instance: Memory;
 
     public constructor(props: any = {}) {
         super("Memory", props);
@@ -15,10 +15,15 @@ export class Memory extends HummerComponent {
     }
 
     protected static checkInstance() {
-        if (!Memory.instance) {
-            Memory.instance = Memory.newInstance();
+        if (!hm.__memory__) {
+            hm.__memory__ = Memory.newInstance();
         }
     }
+
+    static get instance(): Memory {
+        return hm.__memory__
+    }
+
 
     /**
      * 保存键值对

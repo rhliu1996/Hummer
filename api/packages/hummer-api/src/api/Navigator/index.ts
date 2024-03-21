@@ -1,10 +1,8 @@
-const { document: _Document } = __Hummer__
-
 import { HummerComponent } from "../../HummerComponent"
+const { document: _Document } = __Hummer__;
 
+const hm = __Hummer__;
 export class Navigator extends HummerComponent {
-
-    private static instance: Navigator;
 
     public constructor(props: any = {}) {
         super("Navigator", props);
@@ -15,11 +13,14 @@ export class Navigator extends HummerComponent {
     }
 
     protected static checkInstance() {
-        if (!Navigator.instance) {
-            Navigator.instance = Navigator.newInstance();
+        if (!hm.__navigator__) {
+            hm.__navigator__ = Navigator.newInstance();
         }
     }
 
+    static get instance(): Navigator {
+        return hm.__navigator__
+    }
 
     /**
     * 打开某个页面

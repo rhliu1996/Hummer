@@ -1,11 +1,10 @@
 
 import { HummerComponent } from "../../HummerComponent"
 import { View } from "src/components"; 
+const { document: _Document } = __Hummer__;
 
+const hm = __Hummer__;
 export class Toast extends HummerComponent {
-
-    private static instance: Toast;
-
 
     public constructor(props: any = {}) {
         super("Toast", props);
@@ -16,9 +15,13 @@ export class Toast extends HummerComponent {
     }
 
     protected static checkInstance() {
-        if (!Toast.instance) {
-            Toast.instance = Toast.newInstance();
+        if (!hm.__toast__) {
+            hm.__toast__ = Toast.newInstance();
         }
+    }
+
+    static get instance(): Toast {
+        return hm.__toast__
     }
 
 

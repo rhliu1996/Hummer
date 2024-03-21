@@ -1,9 +1,10 @@
 
 import { HummerComponent } from "../../HummerComponent"
+const { document: _Document } = __Hummer__;
 
+const hm = __Hummer__;
 export class Request extends HummerComponent {
 
-    private static instance: Request;
     protected _url: string = '';
     protected _method: string = 'POST';
     protected _timeout: number = 10000;
@@ -21,10 +22,15 @@ export class Request extends HummerComponent {
         return new Request();
     }
 
+
     protected static checkInstance() {
-        if (!Request.instance) {
-            Request.instance = Request.newInstance();
+        if (!hm.__request__) {
+            hm.__request__ = Request.newInstance();
         }
+    }
+
+    static get instance(): Request {
+        return hm.__request__
     }
 
     // API地址

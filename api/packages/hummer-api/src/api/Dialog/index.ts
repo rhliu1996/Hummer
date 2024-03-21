@@ -1,10 +1,11 @@
 
 import { HummerComponent } from "../../HummerComponent"
 import { View } from "src/components";
+const { document: _Document } = __Hummer__;
 
+const hm = __Hummer__;
 export class Dialog extends HummerComponent {
 
-    private static instance: Dialog;
     protected _cancelable: boolean = true;
     protected _lowLayer: boolean = false;
 
@@ -17,9 +18,13 @@ export class Dialog extends HummerComponent {
     }
 
     protected static checkInstance() {
-        if (!Dialog.instance) {
-            Dialog.instance = Dialog.newInstance();
+        if (!hm.__dialog__) {
+            hm.__dialog__ = Dialog.newInstance();
         }
+    }
+
+    static get instance(): Dialog {
+        return hm.__dialog__
     }
 
 
