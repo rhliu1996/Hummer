@@ -1,43 +1,42 @@
 
 import { HummerComponent } from "../../HummerComponent"
-// const { document: _Document, __api__ } = __Hummer__
+const { document: _Document } = __Hummer__;
+
+const hm = __Hummer__;
+// let __api__: any;
 
 export class NotifyCenter extends HummerComponent {
 
-    public static instance: NotifyCenter;
 
     public constructor(props: any = {}) {
         super("NotifyCenter", props);
     }
 
-    public static newInstance(): NotifyCenter {
-        return new NotifyCenter();
-    }
-
-    public static checkInstance() {
-        // if (!__api__.notifyCenter) {
-        //     __api__.notifyCenter = NotifyCenter.newInstance();
-        // }
-        if (!NotifyCenter.instance) {
-            NotifyCenter.instance = NotifyCenter.newInstance();
+    protected static checkInstance() {
+        // __api__ = hm.__api__;
+        if (!hm.__notifyCenter__) {
+            hm.__notifyCenter__ = NotifyCenter.newInstance();
         }
     }
 
+    protected static newInstance(): NotifyCenter {
+        return new NotifyCenter();
+    }
 
-    // protected get instance(): NotifyCenter{
-    //     // return  __api__.notifyCenter
-    //     return NotifyCenter.instance
-    // }
-   
+
+    static get instance(): NotifyCenter {
+        return hm.__notifyCenter__
+    }
+
     /**
      * 添加事件监听
      *
      * @param event 事件名称
      * @param callback 回调事件
      */
-    override addEventListener(event: string, callback: (value: Object) => void) {
+    static addEventListener(event: string, callback: (value: Object) => void) {
         NotifyCenter.checkInstance();
-        super.addEventListener(event, callback)
+        NotifyCenter.instance.addEventListener(event, callback)
     }
 
     /**
@@ -46,12 +45,14 @@ export class NotifyCenter extends HummerComponent {
     * @param event 事件名称
     * @param callback 回调事件
     */
-    override removeEventListener(event: string, callback: (value: Object) => void) {
+    static removeEventListener(event: string, callback: (value: Object) => void) {
         NotifyCenter.checkInstance();
         if(!callback){
             NotifyCenter.instance.call("removeAllEventListener", event)
+        }else {
+            NotifyCenter.instance.removeEventListener(event, callback)
         }
-        super.removeEventListener(event, callback)
+
     }
 
 
@@ -62,10 +63,11 @@ export class NotifyCenter extends HummerComponent {
      * @param event 事件名称
      * @param value 消息内容
      */
-    protected triggerEvent(event: string, value: Object) {
+    static triggerEvent(event: string, value: Object) {
         NotifyCenter.checkInstance();
-        NotifyCenter.instance.call("triggerEvent", event, value);
+        NotifyCenter.instance.call("triggerEvent",event, value);
     }
+
 
 
 }

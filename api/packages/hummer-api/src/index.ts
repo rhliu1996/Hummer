@@ -61,11 +61,6 @@ __GLOBAL__.Hummer = {
 
 }
 
-__Hummer__.__api__   = {
-    notifyCenter :  undefined
-
-}
-
 
 
 
