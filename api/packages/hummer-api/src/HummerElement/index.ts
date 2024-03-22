@@ -2,6 +2,8 @@ const { document: _Document, proxy: _Proxy } = __Hummer__
 
 import { Element } from "../Element"
 import { HummerGlobalProxy } from "./HummerGlobalProxy"
+import { BasicAnimation } from "../anim/BasicAnimation"
+import { KeyframeAnimation } from "../anim/KeyframeAnimation"
 
 let __view_id = 0;
 /**
@@ -123,7 +125,7 @@ export class HummerElement extends Element {
      * @param animation 
      * TODO:保持 Tenon Vue 的兼容，后期切换成同一 Core后，进行变更
      */
-    public handleAnimation(animation: Animation) {
+    public handleAnimation(animation: BasicAnimation | KeyframeAnimation) {
         this.setAnimation(animation);
     }
 
@@ -132,7 +134,7 @@ export class HummerElement extends Element {
      * 
      * @param animation 
      */
-    public setAnimation(animation: Animation) {
+    public setAnimation(animation: BasicAnimation | KeyframeAnimation) {
         if (this.globalProxy) {
             this.globalProxy.handleAnimation(this, animation);
         } else {

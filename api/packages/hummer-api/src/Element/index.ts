@@ -25,6 +25,11 @@ export class Element extends Node {
     private _style: Record<string, string> | null = {};
 
     /**
+     * 动画集合
+     */
+    private _animationMap: Map<string, BasicAnimation | KeyframeAnimation> | undefined  = undefined; 
+
+    /**
      * 节点构造函数
      * 
      * @param tag  节点标签
@@ -168,7 +173,20 @@ export class Element extends Node {
         this._addAnimation(animation, key);
     }
 
-    private _addAnimation(animation: any, key: string = "") {
+
+
+    private _addAnimation(animation: BasicAnimation | KeyframeAnimation, key: string = "") {
+        // 监听动画的开始和结束事件
+        let startFunc = animation._startFunc;
+        let endFunc = animation._endFunc;
+        
+        if(!this.envents.has(key)){
+            this.addEventListener("__onStart__", startFunc);
+            this.addEventListener("__onEnd__", endFunc);
+        }
+
+        // 临时存储，方面后面移除监听
+        this._animationMap && this._animationMap.set(key, animation)
         this.obj.addAnimation(animation, key);
     }
 
@@ -181,7 +199,14 @@ export class Element extends Node {
     }
 
     private _removeAnimationForKey(key: string) {
-        this.obj.removeAnimationForKey(key);
+       // 移除事件监听
+       let anim = this._animationMap &&  this._animationMap.get(key);
+       if(this.envents.has(key) && anim){
+         this.removeEventListener("__onStart__", anim._startFunc);
+         this.removeEventListener("__onEnd__", anim._endFunc);
+       }
+
+       this.obj.removeAnimationForKey(key);
     }
 
     /**
@@ -193,6 +218,10 @@ export class Element extends Node {
 
 
     private _removeAllAnimation() {
+        // 移除事件监听
+        this.removeEventListener("__onStart__")
+        this.removeEventListener("__onEnd__")
+        this._animationMap = undefined
         this.obj.removeAllAnimation();
     }
 
