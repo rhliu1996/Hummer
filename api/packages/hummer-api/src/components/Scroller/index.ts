@@ -1,9 +1,9 @@
 const { document: _Document } = __Hummer__
 
-import { HummerElement } from "../../HummerElement"
+import { LifeCycleManager } from "../../LifeCycle"
 import { View } from "../View"
 
-export class Scroller extends HummerElement {
+export class Scroller extends LifeCycleManager {
 
 
     /**

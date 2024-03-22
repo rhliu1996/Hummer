@@ -1,8 +1,8 @@
 const { document: _Document } = __Hummer__
 
-import { HummerElement } from "../../HummerElement"
+import { LifeCycleManager } from "../../LifeCycle"
 
-export class View extends HummerElement {
+export class View extends LifeCycleManager {
 
 
     /**
