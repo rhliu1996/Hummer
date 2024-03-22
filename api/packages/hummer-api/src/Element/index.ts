@@ -4,6 +4,8 @@ import { Node } from "../Node"
 import { BasicAnimation } from "../anim/BasicAnimation"
 import { KeyframeAnimation } from "../anim/KeyframeAnimation"
 
+const AnimationStartName =  "__onAnimationStart__"
+const AnimationEndName =  "__onAnimationEnd__"
 /**
  * Element 
  * 
@@ -181,8 +183,8 @@ export class Element extends Node {
         let endFunc = animation._endFunc;
         
         if(!this.envents.has(key)){
-            this.addEventListener("__onStart__", startFunc);
-            this.addEventListener("__onEnd__", endFunc);
+            this.addEventListener(AnimationStartName, startFunc);
+            this.addEventListener(AnimationEndName, endFunc);
         }
 
         // 临时存储，方面后面移除监听
@@ -202,8 +204,8 @@ export class Element extends Node {
        // 移除事件监听
        let anim = this._animationMap &&  this._animationMap.get(key);
        if(this.envents.has(key) && anim){
-         this.removeEventListener("__onStart__", anim._startFunc);
-         this.removeEventListener("__onEnd__", anim._endFunc);
+         this.removeEventListener(AnimationStartName, anim._startFunc);
+         this.removeEventListener(AnimationEndName, anim._endFunc);
        }
 
        this.obj.removeAnimationForKey(key);
@@ -219,8 +221,8 @@ export class Element extends Node {
 
     private _removeAllAnimation() {
         // 移除事件监听
-        this.removeEventListener("__onStart__")
-        this.removeEventListener("__onEnd__")
+        this.removeEventListener(AnimationStartName)
+        this.removeEventListener(AnimationEndName)
         this._animationMap = undefined
         this.obj.removeAllAnimation();
     }

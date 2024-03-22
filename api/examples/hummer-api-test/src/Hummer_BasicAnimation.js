@@ -74,6 +74,12 @@ export class RootView extends View {
         keyframeAnim.easing = 'linear';
    
 
+        keyframeAnim.on("start", () => {
+            console.log("------动画开始");
+        });
+        keyframeAnim.on("end", () => {
+            console.log("------动画结束");
+        });
 
 
         let button = new Button()
@@ -82,7 +88,7 @@ export class RootView extends View {
             backGroundColor: "#ff0000"
         }
         button.addEventListener('tap', (event) => {
-            console.log("------动画开始")
+
             // animView.addAnimation(anim, 'key1');
             // animView.addAnimation(anim2, 'key2');
             // animView.addAnimation(anim3, 'key3');
@@ -90,7 +96,7 @@ export class RootView extends View {
 
         });
 
-
+  
 
         this.appendChild(animView)
         this.appendChild(animView2)

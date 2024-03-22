@@ -1,4 +1,4 @@
-import{View, Navigator, Hummer, Button, NotifyCenter} from '../../../packages/hummer-api/dist/hummer-api.es'
+import{View, Navigator,Memory, Hummer, Button, NotifyCenter} from '../../../packages/hummer-api/dist/hummer-api.es'
 
 export class RootView extends View {
     constructor() {
@@ -21,6 +21,15 @@ export class RootView extends View {
             key2: 222,
         }
         Hummer.pageResult = result;
+
+        let memory = new Memory()
+
+       let isExit =  memory.exist('daijia')
+       console.log("memory是否存在", isExit)
+
+        let val = memory.get('daijia')
+        console.log("memory----查询成功",val)
+   
 
         let notifyCenter = Hummer.notifyCenter
         let event1 = function(e){

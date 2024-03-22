@@ -1,4 +1,4 @@
-import{View, Navigator, Hummer, Button, NotifyCenter} from '../../../packages/hummer-api/dist/hummer-api.es'
+import{View, Navigator, Hummer,Memory, Button, NotifyCenter} from '../../../packages/hummer-api/dist/hummer-api.es'
 
 export class RootView extends View {
     constructor() {
@@ -33,6 +33,10 @@ export class RootView extends View {
             
         });
 
+        let memory = new Memory()
+        memory.set('daijia', 'daijiaValue')
+
+     
 
         let notifyCenter = Hummer.notifyCenter
         notifyCenter.addEventListener("myHummer", (e) => {

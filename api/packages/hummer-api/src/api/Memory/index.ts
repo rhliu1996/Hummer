@@ -42,7 +42,7 @@ export class Memory extends HummerComponent {
     * @param key 名称
     * @return value 值
     */
-    static get(key: string, cb: Function): any {
+    static get(key: string, cb?: Function): any {
         Memory.checkInstance();
         return Memory.instance.get(key, cb);
     }
@@ -73,9 +73,9 @@ export class Memory extends HummerComponent {
      *
      * @param key 名称
      */
-    public static exist(key: string, cb: Function) {
+    public static exist(key: string, cb?: Function) {
         Memory.checkInstance();
-        Memory.instance.exist(key, cb);
+        return Memory.instance.exist(key, cb);
     }
 
 
@@ -84,7 +84,7 @@ export class Memory extends HummerComponent {
     }
 
 
-    protected get(key: string, cb: Function): any {
+    protected get(key: string, cb?: Function): any {
         return this.call("get", key, cb);
     }
 
