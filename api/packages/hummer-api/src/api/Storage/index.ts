@@ -33,7 +33,7 @@ export class Storage extends HummerComponent {
      */
     static set(key: string, value: Object, cb?: Function) {
         Storage.checkInstance();
-        Storage.instance.set(key, value, cb);
+        return Storage.instance.set(key, value, cb);
     }
 
     /**
@@ -80,11 +80,11 @@ export class Storage extends HummerComponent {
 
 
     protected set(key: string, value: Object, cb?: Function) {
-        this.call("set", key, value, cb);
+        return this.call("set", key, value, cb);
     }
 
 
-    protected get(key: string, cb: Function): any {
+    protected get(key: string, cb?: Function): any {
         return this.call("get", key, cb);
     }
 
